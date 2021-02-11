@@ -7,6 +7,8 @@ public class PaddleController : MonoBehaviour
 
     public string axisName = "Horizontal";
     public Vector3 velocity = Vector3.right;
+    public BallController ball;
+    public bool autoPlay = false;
     Camera gameCamera;
     void Start()
     {
@@ -14,8 +16,15 @@ public class PaddleController : MonoBehaviour
     }
     void Update()
     {
-        float joy = Input.GetAxisRaw(axisName);
-        transform.position += velocity * joy * Time.deltaTime;
+        if (autoPlay)
+        {
+            float y = ball.transform.position;
+        }
+        else
+        {
+          float dir = Input.GetAxisRaw(axisName);
+        }
+        transform.position += velocity * dir * Time.deltaTime;
 
         Vector3 view = gameCamera.WorldToViewportPoint(transform.position);
         if (view.y > 1)
