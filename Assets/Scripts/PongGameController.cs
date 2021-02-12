@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PongGameController : MonoBehaviour
 {
+    public Button playAgain;
     public Text scoreText;
     public Text promptText;
     public BallController ball;
@@ -16,8 +17,9 @@ public class PongGameController : MonoBehaviour
     void Start ()
     {
         gameCamera = Camera.main;
-        promptText.enabled = false;
         DisplayScore();
+        promptText.enabled = false;
+        playAgain.gameObject.SetActive(false);
     }
     void Update ()
     {
@@ -38,16 +40,22 @@ public class PongGameController : MonoBehaviour
         if(player1Score == 7)
         {
             promptText.text = "PLAYER 1 WINS!";
-            promptText.enabled = true;
-            ball.gameObject.SetActive(false);
+            ResetScore();
         }
         else if(player2Score == 7)
         {
             promptText.text = "PLAYER 2 WINS!";
-            promptText.enabled = true;
-            ball.gameObject.SetActive(false);
+            ResetScore();
         }
-        scoreText.text = player1Score.ToString() + " -" + player2Score.ToString();
+        scoreText.text = player1Score.ToString() + " - " + player2Score.ToString();
         ball.transform.position = Vector3.zero;
+    }
+    void ResetScore()
+    {
+        player1Score = 0;
+        player2Score = 0;
+        promptText.enabled = true;
+         playAgain.gameObject.SetActive(true);
+        ball.gameObject.SetActive(false);
     }
 }

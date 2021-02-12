@@ -30,6 +30,6 @@ public class BreakoutGameController : MonoBehaviour
     void Win()
     {
         promptText.enabled = true;
-        ball.enabled = false;
+        ball.gameObject.SetActive(false);
     }
 }
