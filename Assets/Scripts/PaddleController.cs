@@ -16,14 +16,14 @@ public class PaddleController : MonoBehaviour
     }
     void Update()
     {
-        if (autoPlay)
-        {
-            float y = ball.transform.position;
-        }
-        else
-        {
+        //if (autoPlay)
+        //{
+            //float y = ball.transform.position;
+        //}
+        //else
+        //{
           float dir = Input.GetAxisRaw(axisName);
-        }
+        //}
         transform.position += velocity * dir * Time.deltaTime;
 
         Vector3 view = gameCamera.WorldToViewportPoint(transform.position);
