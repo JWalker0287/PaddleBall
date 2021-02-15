@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PongGameController : MonoBehaviour
 {
-    public Button playAgain;
     public Text scoreText;
     public Text promptText;
     public BallController ball;
@@ -17,11 +16,28 @@ public class PongGameController : MonoBehaviour
     void Start ()
     {
         gameCamera = Camera.main;
-        DisplayScore();
+        Setup();
+    }
+    void Setup()
+    {
         promptText.enabled = false;
-        playAgain.gameObject.SetActive(false);
+        player1Score = 0;
+        player2Score = 0;
+        ball.gameObject.SetActive(true);
+        DisplayScore();
     }
     void Update ()
+    {
+        if (ball.gameObject.activeSelf)
+        {
+            UpdatePlaying();
+        }
+        else
+        {
+            UpdateGameOver();
+        }
+    }
+    void UpdatePlaying()
     {
         Vector3 view = gameCamera.WorldToViewportPoint(ball.transform.position);
         if (view.x < 0)
@@ -33,6 +49,14 @@ public class PongGameController : MonoBehaviour
         {
             player1Score ++;
             DisplayScore();
+        }
+
+    }
+    void UpdateGameOver()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            Setup();
         }
     }
     void DisplayScore()
@@ -55,7 +79,6 @@ public class PongGameController : MonoBehaviour
         player1Score = 0;
         player2Score = 0;
         promptText.enabled = true;
-         playAgain.gameObject.SetActive(true);
         ball.gameObject.SetActive(false);
     }
 }

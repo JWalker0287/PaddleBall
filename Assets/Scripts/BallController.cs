@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public Vector3 initialVelocity = Vector3.up;
+    public float speed = 10;
+    public Vector3 direction = Vector3.up;
     Rigidbody body;
     AudioSource thud;
     void Start()
     {
         thud = GetComponent<AudioSource>();
         body = GetComponent<Rigidbody>();
-        body.velocity = initialVelocity;
+        body.velocity = speed * direction;
+    }
+    public void SetDirection(Vector3 diff)
+    {
+        diff = diff.normalized;
+        body.velocity = diff * speed;
     }
     void OnCollisionEnter(Collision c)
     {
         thud.Play();
+    }
+    void BallIdleState()
+    {
+        
     }
 }

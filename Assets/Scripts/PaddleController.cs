@@ -7,11 +7,12 @@ public class PaddleController : MonoBehaviour
 
     public string axisName = "Horizontal";
     public Vector3 velocity = Vector3.right;
-    public BallController ball;
+    BallController ball;
     public bool autoPlay = false;
     Camera gameCamera;
     void Start()
     {
+        ball = FindObjectOfType<BallController>();
         gameCamera = Camera.main;
     }
     void Update()
@@ -19,15 +20,8 @@ public class PaddleController : MonoBehaviour
         float dir = 0;
         if (autoPlay)
         {
-            float y = ball.transform.position.y;
-            if (transform.position.y > y)
-            {
-                dir = -1;
-            }
-            else if (transform.position.y < y)
-            {
-                dir = 1;
-            }
+            Vector3 diff = ball.transform.position - transform.position;
+            dir = Vector3.Dot(diff.normalized, velocity.normalized);
         }
         else
         {
@@ -54,5 +48,13 @@ public class PaddleController : MonoBehaviour
         }
         transform.position = gameCamera.ViewportToWorldPoint(view);
 
+    }
+    void OnCollisionEnter(Collision c)
+    {
+        BallController ball = c.gameObject.GetComponent<BallController>();
+        if (ball == null) return;
+
+        Vector3 diff = ball.transform.position - transform.position;
+        ball.SetDirection(diff);
     }
 }
