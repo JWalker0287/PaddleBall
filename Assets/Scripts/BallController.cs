@@ -12,7 +12,7 @@ public class BallController : MonoBehaviour
     {
         thud = GetComponent<AudioSource>();
         body = GetComponent<Rigidbody>();
-        body.velocity = speed * direction;
+        SetVelocity();
     }
     public void SetDirection(Vector3 diff)
     {
@@ -23,8 +23,8 @@ public class BallController : MonoBehaviour
     {
         thud.Play();
     }
-    void BallIdleState()
+    public void SetVelocity()
     {
-        
+        body.velocity = speed * direction;
     }
 }

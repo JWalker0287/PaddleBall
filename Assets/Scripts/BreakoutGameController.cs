@@ -7,24 +7,25 @@ public class BreakoutGameController : MonoBehaviour
 {
     public Text promptText;
     public Text lifeText;
-    public Text loseText;
     public int lives = 3;
     public int numBricks = 78;
     public BallController ball;
     public PaddleController paddle;
     Camera gameCamera;
     bool preGame = true;
-
+    BrickSpawner bricks;
 
     void Start()
     {
+        bricks = GameObject.FindObjectOfType<BrickSpawner>();
         gameCamera = Camera.main;
         Setup();
     }
     void Setup()
     {
+        bricks.DestroyBricks();
+        bricks.SpawnBricks();
         promptText.enabled = false;
-        loseText.enabled = false;
         lives = 3;
         lifeText.text = "Lives: " + lives;
         ball.gameObject.SetActive(true);
@@ -32,20 +33,17 @@ public class BreakoutGameController : MonoBehaviour
     }
     void Update()
     {
-        if (preGame)
+        if (lives == 0)
+        {
+           Lose();
+        }
+        else if (preGame)
         {
             PreGame();
         }
         else
         {
-            if (lives > 0)
-            {
-                UpdatePlaying();
-            }
-            else
-            {
-                Lose();
-            }
+            UpdatePlaying();
         }
     }
     void UpdatePlaying()
@@ -75,7 +73,7 @@ public class BreakoutGameController : MonoBehaviour
     }
     void Lose()
     {
-        promptText.text = "You Lose ;(";
+        promptText.text = "You Lose :(";
         promptText.enabled = true;
         ball.gameObject.SetActive(false);
         if (Input.GetButtonDown("Jump"))
@@ -88,6 +86,7 @@ public class BreakoutGameController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             preGame = false;
+            ball.SetVelocity();
         }
         Vector3 paddlePos = paddle.transform.position;
         paddlePos.y = -5;

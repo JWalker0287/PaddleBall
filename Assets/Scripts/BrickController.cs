@@ -6,10 +6,11 @@ public class BrickController : MonoBehaviour
 {
     Rigidbody body;
     public GameObject brick;
-    public BreakoutGameController test;
+    BreakoutGameController test;
     void Start()
     {
         body = GetComponent<Rigidbody>();
+        test = GameObject.FindObjectOfType<BreakoutGameController>();
     }
     void OnCollisionExit(Collision c)
     {
