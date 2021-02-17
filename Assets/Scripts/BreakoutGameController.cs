@@ -5,31 +5,40 @@ using UnityEngine.UI;
 
 public class BreakoutGameController : MonoBehaviour
 {
+    public BrickController prefab;
+    public int width;
+    public int height;
+    public float horizontalSpacing;
+    public float verticalSpacing;
+    public float bricksXPos;
+    public float bricksYPos;
+    MeshRenderer color;
+    public BrickController[] bricks;
     public Text promptText;
     public Text lifeText;
     public int lives = 3;
-    public int numBricks = 78;
+    public int numBricks;
     public BallController ball;
     public PaddleController paddle;
     Camera gameCamera;
-    bool preGame = true;
-    BrickSpawner bricks;
+    public bool preGame = true;
 
     void Start()
     {
-        bricks = GameObject.FindObjectOfType<BrickSpawner>();
         gameCamera = Camera.main;
+        SpawnBricks();
         Setup();
     }
     void Setup()
     {
-        bricks.DestroyBricks();
-        bricks.SpawnBricks();
+        //bricks.DestroyBricks();
         promptText.enabled = false;
-        lives = 3;
-        lifeText.text = "Lives: " + lives;
         ball.gameObject.SetActive(true);
         preGame = true;
+        numBricks = bricks.Length;
+        lives = 3;
+        lifeText.text = "Lives: " + lives;
+        Reset();
     }
     void Update()
     {
@@ -64,7 +73,10 @@ public class BreakoutGameController : MonoBehaviour
     }
     void Win()
     {
+        promptText.color = Color.green;
+        promptText.text = "You Won!";
         promptText.enabled = true;
+        ball.transform.position = Vector3.zero;
         ball.gameObject.SetActive(false);
         if (Input.GetButtonDown("Jump"))
         {
@@ -73,6 +85,7 @@ public class BreakoutGameController : MonoBehaviour
     }
     void Lose()
     {
+        promptText.color = Color.red;
         promptText.text = "You Lose :(";
         promptText.enabled = true;
         ball.gameObject.SetActive(false);
@@ -89,7 +102,42 @@ public class BreakoutGameController : MonoBehaviour
             ball.SetVelocity();
         }
         Vector3 paddlePos = paddle.transform.position;
-        paddlePos.y = -5;
+        paddlePos.y = -8;
         ball.transform.position = paddlePos;
+    }
+    void SpawnBricks()
+    {
+        for(int i = 0;i < width; i++)
+        {
+            for (int j = 0;j < height; j++)
+            {
+                BrickController g = Instantiate<BrickController>(prefab);
+                g.transform.position = new Vector3(i * horizontalSpacing + bricksXPos,j*verticalSpacing + bricksYPos, 0);
+                color = g.GetComponentInChildren<MeshRenderer>();
+                if(j >= 5)
+                {
+                    color.material.SetColor("_Color",Color.red);
+
+                }
+                else if (j >= 4)
+                {
+                    color.material.SetColor("_Color",Color.yellow);
+                }
+                else if (j >= 2)
+                {
+                    color.material.SetColor("_Color",Color.green);
+                }
+            }
+        }
+        bricks = FindObjectsOfType<BrickController>();
+        numBricks = bricks.Length;
+    }
+    void Reset()
+    {
+        for(int i = 0;i < bricks.Length;i++)
+        {
+            bricks[i].ResetBricks();
+        }
+        //SpawnBricks();
     }
 }

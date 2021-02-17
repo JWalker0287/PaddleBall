@@ -7,10 +7,14 @@ public class BrickController : MonoBehaviour
     Rigidbody body;
     public GameObject brick;
     BreakoutGameController test;
-    void Start()
+    void Awake()
     {
         body = GetComponent<Rigidbody>();
         test = GameObject.FindObjectOfType<BreakoutGameController>();
+    }
+    public void ResetBricks()
+    {
+        brick.SetActive(true);
     }
     void OnCollisionExit(Collision c)
     {

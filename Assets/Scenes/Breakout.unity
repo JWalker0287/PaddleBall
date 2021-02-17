@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47e4278382618d4c85db9d5b986b716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8996927954721384879, guid: 11e0ecc073da0ea48b2a7168fd787836, type: 3}
+  prefab: {fileID: 1142536576148005107, guid: 11e0ecc073da0ea48b2a7168fd787836, type: 3}
   width: 13
   height: 6
   horizontalSpacing: 3
@@ -1176,9 +1176,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 86455297}
     - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
+      propertyPath: width
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
+      propertyPath: height
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
       propertyPath: paddle
       value: 
       objectReference: {fileID: 889965598}
+    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 1142536576148005107, guid: 11e0ecc073da0ea48b2a7168fd787836, type: 3}
     - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
       propertyPath: lifeText
       value: 
@@ -1192,12 +1204,28 @@ PrefabInstance:
       value: 78
       objectReference: {fileID: 0}
     - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
+      propertyPath: bricksXPos
+      value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
+      propertyPath: bricksYPos
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
       propertyPath: promptText
       value: 
       objectReference: {fileID: 137428811}
     - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
+      propertyPath: verticalSpacing
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
       propertyPath: bricks.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
+      propertyPath: horizontalSpacing
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4278493575717397787, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
       propertyPath: m_RootOrder

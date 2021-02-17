@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BrickSpawner : MonoBehaviour
 {
-public GameObject prefab;
+public BrickController prefab;
     public int width;
     public int height;
     public float horizontalSpacing;
@@ -18,7 +18,7 @@ public GameObject prefab;
         {
             for (int j = 0;j < height; j++)
             {
-                GameObject g = Instantiate(prefab);
+                BrickController g = Instantiate<BrickController>(prefab);
                 g.transform.position = new Vector3(i * horizontalSpacing + bricksXPos,j*verticalSpacing + bricksYPos, 0);
                 color = g.GetComponentInChildren<MeshRenderer>();
                 if(j >= 5)

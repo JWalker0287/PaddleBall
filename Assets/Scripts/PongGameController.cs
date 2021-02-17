@@ -24,6 +24,7 @@ public class PongGameController : MonoBehaviour
         player1Score = 0;
         player2Score = 0;
         ball.gameObject.SetActive(true);
+        ball.SetVelocity();
         DisplayScore();
     }
     void Update ()
@@ -63,16 +64,19 @@ public class PongGameController : MonoBehaviour
     {
         if(player1Score == 7)
         {
+            promptText.color = Color.blue;
             promptText.text = "PLAYER 1 WINS!";
             ResetScore();
         }
         else if(player2Score == 7)
         {
+            promptText.color = Color.red;
             promptText.text = "PLAYER 2 WINS!";
             ResetScore();
         }
         scoreText.text = player1Score.ToString() + " - " + player2Score.ToString();
         ball.transform.position = Vector3.zero;
+        ball.SetVelocity();
     }
     void ResetScore()
     {
