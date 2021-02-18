@@ -7,10 +7,10 @@ public class BallController : MonoBehaviour
     public float speed = 10;
     public Vector3 direction = Vector3.up;
     Rigidbody body;
-    AudioSource thud;
+    AudioSource placeHolderSound;
     void Start()
     {
-        thud = GetComponent<AudioSource>();
+        placeHolderSound = GetComponent<AudioSource>();
         body = GetComponent<Rigidbody>();
         SetVelocity();
     }
@@ -21,7 +21,7 @@ public class BallController : MonoBehaviour
     }
     void OnCollisionEnter(Collision c)
     {
-        thud.Play();
+        placeHolderSound.Play();
     }
     public void SetVelocity()
     {

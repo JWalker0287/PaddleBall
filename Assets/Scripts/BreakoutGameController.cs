@@ -16,7 +16,9 @@ public class BreakoutGameController : MonoBehaviour
     public BrickController[] bricks;
     public Text promptText;
     public Text lifeText;
+    public Text scoreText;
     public int lives = 3;
+    public int score = 0;
     public int numBricks;
     public BallController ball;
     public PaddleController paddle;
@@ -36,7 +38,6 @@ public class BreakoutGameController : MonoBehaviour
         ball.gameObject.SetActive(true);
         preGame = true;
         numBricks = bricks.Length;
-        lives = 3;
         lifeText.text = "Lives: " + lives;
         Reset();
     }
@@ -57,6 +58,7 @@ public class BreakoutGameController : MonoBehaviour
     }
     void UpdatePlaying()
     {
+        UpdateScore();
         Vector3 view = gameCamera.WorldToViewportPoint(ball.transform.position);
         if (view.y < 0)
         {
@@ -70,6 +72,10 @@ public class BreakoutGameController : MonoBehaviour
             Win();
         }
 
+    }
+    void UpdateScore()
+    {
+        scoreText.text = "Score: " + score.ToString();
     }
     void Win()
     {
@@ -91,8 +97,11 @@ public class BreakoutGameController : MonoBehaviour
         ball.gameObject.SetActive(false);
         if (Input.GetButtonDown("Jump"))
         {
+            lives = 3;
             Setup();
         }
+        score = 0;
+        UpdateScore();
     }
     void PreGame()
     {
@@ -117,15 +126,17 @@ public class BreakoutGameController : MonoBehaviour
                 if(j >= 5)
                 {
                     color.material.SetColor("_Color",Color.red);
-
+                    g.scorePerBrick = 1000;
                 }
                 else if (j >= 4)
                 {
                     color.material.SetColor("_Color",Color.yellow);
+                    g.scorePerBrick = 500;
                 }
                 else if (j >= 2)
                 {
                     color.material.SetColor("_Color",Color.green);
+                    g.scorePerBrick = 100;
                 }
             }
         }

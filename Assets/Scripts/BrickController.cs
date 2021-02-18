@@ -7,6 +7,7 @@ public class BrickController : MonoBehaviour
     Rigidbody body;
     public GameObject brick;
     BreakoutGameController test;
+    public int scorePerBrick = 50;
     void Awake()
     {
         body = GetComponent<Rigidbody>();
@@ -19,6 +20,7 @@ public class BrickController : MonoBehaviour
     void OnCollisionExit(Collision c)
     {
         test.numBricks --;
+        test.score += scorePerBrick;
         brick.SetActive(false);
     }
 

@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 1197984092}
     - target: {fileID: 1240265262, guid: 7902e0d4773126e4da35d75dd00ffe58, type: 3}
       propertyPath: axisName
-      value: Vertical
+      value: VerticalPlayer1
       objectReference: {fileID: 0}
     - target: {fileID: 1240265262, guid: 7902e0d4773126e4da35d75dd00ffe58, type: 3}
       propertyPath: velocity.y
@@ -1044,7 +1044,7 @@ PrefabInstance:
       objectReference: {fileID: 1197984092}
     - target: {fileID: 1240265262, guid: 7902e0d4773126e4da35d75dd00ffe58, type: 3}
       propertyPath: autoPlay
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1240265262, guid: 7902e0d4773126e4da35d75dd00ffe58, type: 3}
       propertyPath: velocity.y
