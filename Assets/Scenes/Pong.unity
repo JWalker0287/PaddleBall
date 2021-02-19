@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 1197984092}
     - target: {fileID: 1240265262, guid: 7902e0d4773126e4da35d75dd00ffe58, type: 3}
       propertyPath: axisName
-      value: VerticalPlayer1
+      value: Vertical
       objectReference: {fileID: 0}
     - target: {fileID: 1240265262, guid: 7902e0d4773126e4da35d75dd00ffe58, type: 3}
       propertyPath: velocity.y
@@ -349,7 +349,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e2059e2120c35de48b999f09062315cb, type: 3}
     m_FontSize: 90
     m_FontStyle: 1
     m_BestFit: 0
@@ -521,7 +521,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e2059e2120c35de48b999f09062315cb, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -1044,7 +1044,7 @@ PrefabInstance:
       objectReference: {fileID: 1197984092}
     - target: {fileID: 1240265262, guid: 7902e0d4773126e4da35d75dd00ffe58, type: 3}
       propertyPath: autoPlay
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1240265262, guid: 7902e0d4773126e4da35d75dd00ffe58, type: 3}
       propertyPath: velocity.y

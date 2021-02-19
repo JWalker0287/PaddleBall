@@ -38,7 +38,7 @@ public class BreakoutGameController : MonoBehaviour
         ball.gameObject.SetActive(true);
         preGame = true;
         numBricks = bricks.Length;
-        lifeText.text = "Lives: " + lives;
+        UpdateLives();
         Reset();
     }
     void Update()
@@ -65,7 +65,7 @@ public class BreakoutGameController : MonoBehaviour
             ball.transform.position = Vector3.zero;
             preGame = true;
             lives --;
-            lifeText.text = "Lives: " + lives.ToString();
+            UpdateLives();
         }
         if (numBricks == 0)
         {
@@ -138,6 +138,11 @@ public class BreakoutGameController : MonoBehaviour
                     color.material.SetColor("_Color",Color.green);
                     g.scorePerBrick = 100;
                 }
+                else
+                {
+                    color.material.SetColor("_Color",Color.blue);
+                    g.scorePerBrick = 50;
+                }
             }
         }
         bricks = FindObjectsOfType<BrickController>();
@@ -150,5 +155,13 @@ public class BreakoutGameController : MonoBehaviour
             bricks[i].ResetBricks();
         }
         //SpawnBricks();
+    }
+    void UpdateLives()
+    {
+        lifeText.text = "";
+        for(int i = 0; i < lives; i ++)
+        {
+            lifeText.text += " ";
+        }
     }
 }
