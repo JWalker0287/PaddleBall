@@ -7,10 +7,12 @@ public class BallController : MonoBehaviour
     public float speed = 10;
     public Vector3 direction = Vector3.up;
     Rigidbody body;
+    Animator anim;
     AudioSource placeHolderSound;
     void Start()
     {
         placeHolderSound = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
         SetVelocity();
     }

@@ -39,13 +39,17 @@ public class BreakoutGameController : MonoBehaviour
         preGame = true;
         numBricks = bricks.Length;
         UpdateLives();
-        Reset();
+        BrickReset();
     }
     void Update()
     {
         if (lives == 0)
         {
            Lose();
+        }
+        else if (numBricks == 0)
+        {
+            Win();
         }
         else if (preGame)
         {
@@ -66,10 +70,6 @@ public class BreakoutGameController : MonoBehaviour
             preGame = true;
             lives --;
             UpdateLives();
-        }
-        if (numBricks == 0)
-        {
-            Win();
         }
 
     }
@@ -148,13 +148,12 @@ public class BreakoutGameController : MonoBehaviour
         bricks = FindObjectsOfType<BrickController>();
         numBricks = bricks.Length;
     }
-    void Reset()
+    void BrickReset()
     {
         for(int i = 0;i < bricks.Length;i++)
         {
             bricks[i].ResetBricks();
         }
-        //SpawnBricks();
     }
     void UpdateLives()
     {
