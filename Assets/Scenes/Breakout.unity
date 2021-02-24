@@ -289,12 +289,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193232560}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &221648630
 GameObject:
@@ -387,7 +387,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &418999748
 GameObject:
@@ -421,10 +421,10 @@ RectTransform:
   m_Father: {fileID: 1428648478}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 207.54001, y: -28.39}
-  m_SizeDelta: {x: 415.076, y: 56.018005}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 107.41, y: 18.380005}
+  m_SizeDelta: {x: 181.882, y: 38.546997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418999750
 MonoBehaviour:
@@ -448,10 +448,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3af4d74a235bf8142b85a44d8ccc9214, type: 3}
-    m_FontSize: 35
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -547,7 +547,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788800042}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3127ed7888f1c2d459b1188828e78bd8, type: 2}
   m_CullingMode: 0
@@ -895,9 +895,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 63.600006, y: 19.11}
+  m_AnchoredPosition: {x: 810, y: 30}
   m_SizeDelta: {x: 127.194, y: 37.468994}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1.1038555, y: 0.5}
 --- !u!114 &1421844484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,21 +1246,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 889965598}
     - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
-      propertyPath: prefab
-      value: 
-      objectReference: {fileID: 1142536576148005107, guid: 11e0ecc073da0ea48b2a7168fd787836, type: 3}
-    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
       propertyPath: lifeText
       value: 
       objectReference: {fileID: 1421844484}
-    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
-      propertyPath: loseText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
-      propertyPath: numBricks
-      value: 78
-      objectReference: {fileID: 0}
     - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
       propertyPath: scoreText
       value: 
@@ -1270,25 +1258,9 @@ PrefabInstance:
       value: -18
       objectReference: {fileID: 0}
     - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
-      propertyPath: bricksYPos
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
       propertyPath: promptText
       value: 
       objectReference: {fileID: 137428811}
-    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
-      propertyPath: verticalSpacing
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
-      propertyPath: bricks.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
-      propertyPath: horizontalSpacing
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4278493575717397787, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
       propertyPath: m_RootOrder
       value: 5

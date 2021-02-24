@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PongGameController : MonoBehaviour
 {
     public Text scoreText;
+    public Color red;
+    public Color blue;
     public Text promptText;
     public BallController ball;
     public int player1Score;
@@ -64,13 +66,13 @@ public class PongGameController : MonoBehaviour
     {
         if(player1Score == 7)
         {
-            promptText.color = Color.blue;
+            promptText.color = blue;
             promptText.text = "PLAYER 1 WINS!";
             ResetScore();
         }
         else if(player2Score == 7)
         {
-            promptText.color = Color.red;
+            promptText.color = red;
             promptText.text = "PLAYER 2 WINS!";
             ResetScore();
         }

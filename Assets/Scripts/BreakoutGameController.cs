@@ -20,10 +20,13 @@ public class BreakoutGameController : MonoBehaviour
     public int lives = 3;
     public int score = 0;
     public int numBricks;
+    int timesPlayed = 0;
     public BallController ball;
     public PaddleController paddle;
     Camera gameCamera;
     public bool preGame = true;
+    Color red;
+    public AudioSource winNoise;
 
     void Start()
     {
@@ -34,6 +37,7 @@ public class BreakoutGameController : MonoBehaviour
     void Setup()
     {
         //bricks.DestroyBricks();
+        timesPlayed = 0;
         promptText.enabled = false;
         ball.gameObject.SetActive(true);
         preGame = true;
@@ -79,6 +83,11 @@ public class BreakoutGameController : MonoBehaviour
     }
     void Win()
     {
+        if (timesPlayed == 0)
+        {
+            winNoise.Play();
+            timesPlayed ++;
+        }
         promptText.color = Color.green;
         promptText.text = "You Won!";
         promptText.enabled = true;
