@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 9098067699890687394}
   - component: {fileID: 1305676384396231688}
   - component: {fileID: 4696030120213341382}
-  - component: {fileID: 6616154736717411455}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -130,11 +129,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac3177cc0f4bd04aa2e21a3bb0f227d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceParticles: {fileID: 0}
+  bounceParticles: {fileID: 5528661375517144801}
   speed: 15
   initialSpeed: 10
   speedIncrease: 0
   direction: {x: 0, y: 1, z: 0}
+  paddle: {fileID: 0}
+  wallHit: {fileID: 8300000, guid: 3cdcfe4f2402464499600f9b5ac686fc, type: 3}
+  hitBrick: {fileID: 8300000, guid: 5f6a8b08c2581b94badf86fb5ae3462c, type: 3}
+  hitPaddle: {fileID: 8300000, guid: 0acb2439cfcfcea40a7384c78f32d066, type: 3}
 --- !u!54 &9098067699890687394
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -260,25 +263,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &6616154736717411455
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293266616604411026}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3127ed7888f1c2d459b1188828e78bd8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2364717842353589842
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +923,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 25
+    angle: 15.19
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -1025,7 +1009,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.0001
       mode: 0
       spread: 0
       speed:

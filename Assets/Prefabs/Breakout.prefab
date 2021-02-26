@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1142536576148005107, guid: 11e0ecc073da0ea48b2a7168fd787836, type: 3}
+  red: {r: 0.6886792, g: 0.078431375, b: 0.078431375, a: 1}
+  green: {r: 0, g: 0.64705884, b: 0, a: 1}
   width: 13
   height: 6
   horizontalSpacing: 3
@@ -65,7 +67,10 @@ MonoBehaviour:
   ball: {fileID: 0}
   paddle: {fileID: 0}
   preGame: 1
-  winNoise: {fileID: 1671943092}
+  gameSound: {fileID: 1671943092}
+  loseLife: {fileID: 8300000, guid: 4b1eb05a169235a4c9002196538e47e3, type: 3}
+  winNoise: {fileID: 8300000, guid: cfdd320ac6c9b4c48b7a5075bc299074, type: 3}
+  startNoise: {fileID: 8300000, guid: 3759f809ce876f04fb8be8c730956e56, type: 3}
 --- !u!82 &1671943092
 AudioSource:
   m_ObjectHideFlags: 0

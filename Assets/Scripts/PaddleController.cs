@@ -10,6 +10,8 @@ public class PaddleController : MonoBehaviour
     BallController ball;
     public bool autoPlay = false;
     Camera gameCamera;
+    public BreakoutGameController carl;
+    public AudioSource paddleSound;
     void Start()
     {
         ball = FindObjectOfType<BallController>();
@@ -56,5 +58,16 @@ public class PaddleController : MonoBehaviour
 
         Vector3 diff = ball.transform.position - transform.position;
         ball.SetDirection(diff);
+    }
+    void OnTriggerEnter(Collider c)
+    {
+        PowerUpController powerUp = c.gameObject.GetComponent<PowerUpController>();
+        if (powerUp == null) return;
+        if (powerUp.powerupType == "xtraLife")
+        {
+            carl.lives ++;
+        }
+        Destroy(c.gameObject);
+        paddleSound.Play();
     }
 }

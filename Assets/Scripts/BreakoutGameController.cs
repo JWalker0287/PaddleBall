@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class BreakoutGameController : MonoBehaviour
 {
     public BrickController prefab;
+    public Color red;
+    public Color green;
     public int width;
     public int height;
     public float horizontalSpacing;
@@ -17,16 +19,21 @@ public class BreakoutGameController : MonoBehaviour
     public Text promptText;
     public Text lifeText;
     public Text scoreText;
+    public Text highScoreText;
     public int lives = 3;
     public int score = 0;
+    int highScore = 0;
     public int numBricks;
     int timesPlayed = 0;
     public BallController ball;
     public PaddleController paddle;
     Camera gameCamera;
     public bool preGame = true;
-    Color red;
-    public AudioSource winNoise;
+    public Animator canvasAnim;
+    public AudioSource gameSound;
+    public AudioClip loseLife;
+    public AudioClip winNoise;
+    public AudioClip startNoise;
 
     void Start()
     {
@@ -73,22 +80,31 @@ public class BreakoutGameController : MonoBehaviour
             ball.transform.position = Vector3.zero;
             preGame = true;
             lives --;
-            UpdateLives();
+            canvasAnim.SetTrigger("LifeLost");
+            gameSound.clip = loseLife;
+            gameSound.Play();
         }
+        UpdateLives();
 
     }
     void UpdateScore()
     {
         scoreText.text = "Score: " + score.ToString();
+        if(score >= highScore)
+        {
+            highScore = score;
+        }
+            highScoreText.text = "Highscore: " + highScore.ToString();
     }
     void Win()
     {
         if (timesPlayed == 0)
         {
-            winNoise.Play();
+            gameSound.clip = winNoise;
+            gameSound.Play();
             timesPlayed ++;
         }
-        promptText.color = Color.green;
+        promptText.color = green;
         promptText.text = "You Won!";
         promptText.enabled = true;
         ball.transform.position = Vector3.zero;
@@ -100,7 +116,7 @@ public class BreakoutGameController : MonoBehaviour
     }
     void Lose()
     {
-        promptText.color = Color.red;
+        promptText.color = red;
         promptText.text = "You Lose :(";
         promptText.enabled = true;
         ball.gameObject.SetActive(false);
@@ -118,6 +134,8 @@ public class BreakoutGameController : MonoBehaviour
         {
             preGame = false;
             ball.SetVelocity();
+            gameSound.clip = startNoise;
+            gameSound.Play();
         }
         Vector3 paddlePos = paddle.transform.position;
         paddlePos.y = -8;
@@ -169,7 +187,7 @@ public class BreakoutGameController : MonoBehaviour
         lifeText.text = "";
         for(int i = 0; i < lives; i ++)
         {
-            lifeText.text += " ";
+            lifeText.text += " B";
         }
     }
 }

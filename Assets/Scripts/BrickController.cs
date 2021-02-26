@@ -6,12 +6,17 @@ public class BrickController : MonoBehaviour
 {
     Rigidbody body;
     public GameObject brick;
-    BreakoutGameController test;
+    public PowerUpController powerPrefab;
+    public Color red;
+    public Color purple;
+    BreakoutGameController gameController;
     public int scorePerBrick = 50;
+    AudioSource brickBreak;
     void Awake()
     {
+        brickBreak = GetComponent<AudioSource>();
         body = GetComponent<Rigidbody>();
-        test = GameObject.FindObjectOfType<BreakoutGameController>();
+        gameController = GameObject.FindObjectOfType<BreakoutGameController>();
     }
     public void ResetBricks()
     {
@@ -19,8 +24,18 @@ public class BrickController : MonoBehaviour
     }
     void OnCollisionExit(Collision c)
     {
-        test.numBricks --;
-        test.score += scorePerBrick;
+        brickBreak.Play();
+        int i = Random.Range(1,10);
+        Debug.Log(i);
+        if(i == 1)
+        {
+            PowerUpController p = Instantiate<PowerUpController>(powerPrefab);
+            p.transform.position = transform.position;
+        }
+        gameController.numBricks --;
+        gameController.score += scorePerBrick;
+        gameController.canvasAnim.SetTrigger("ScoreUp");
+
         brick.SetActive(false);
     }
 

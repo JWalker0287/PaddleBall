@@ -9,12 +9,16 @@ public class BallController : MonoBehaviour
     public float initialSpeed = 10;
     public float speedIncrease = 0;
     public Vector3 direction = Vector3.up;
+    public PaddleController paddle;
     Rigidbody body;
     Animator anim;
-    AudioSource placeHolderSound;
+    AudioSource ballSounds;
+    public AudioClip wallHit;
+    public AudioClip hitBrick;
+    public AudioClip hitPaddle;
     void Start()
     {
-        placeHolderSound = GetComponent<AudioSource>();
+        ballSounds = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
         SetVelocity();
@@ -41,8 +45,24 @@ public class BallController : MonoBehaviour
         anim.SetTrigger("impact");
 
         //float frac;
-        //placeHolderSound.pitch = Random.Range(1.0f,1.5f);
-        placeHolderSound.Play();
+        ballSounds.pitch = Random.Range(0.9f,1.0f);
+       // Debug.Log(c.gameObject);
+        PaddleController thing = c.gameObject.GetComponent<PaddleController>();
+        BrickController brick = c.gameObject.GetComponent<BrickController>();
+        if (thing != null)
+        {
+            ballSounds.clip = hitPaddle;
+        }
+        else if(brick != null)
+        {
+            ballSounds.clip = hitBrick;
+        }
+        else
+        {
+            ballSounds.clip = wallHit;
+        }
+        bounceParticles.Play();
+        ballSounds.Play();
     }
     public void SetVelocity()
     {
