@@ -10,18 +10,20 @@ public class BallController : MonoBehaviour
     public float speedIncrease = 0;
     public Vector3 direction = Vector3.up;
     public PaddleController paddle;
+    public bool autoLaunch = true;
     Rigidbody body;
     Animator anim;
     AudioSource ballSounds;
     public AudioClip wallHit;
     public AudioClip hitBrick;
     public AudioClip hitPaddle;
-    void Start()
+    const float maxSpeed = 50;
+    void Awake()
     {
         ballSounds = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
-        SetVelocity();
+        if (autoLaunch) Launch();
     }
     void Update()
     {
@@ -34,11 +36,21 @@ public class BallController : MonoBehaviour
     }
     public void Launch()
     {
-
+        speed = initialSpeed;
+        body.velocity = direction.normalized * speed;
     }
     public void Stop()
     {
         body.velocity = Vector3.zero;
+    }
+    public Vector3 GetVelocity()
+    {
+        return body.velocity;
+    }
+    public void IncreaseSpeed()
+    {
+        speed += speedIncrease;
+
     }
     void OnCollisionEnter(Collision c)
     {
@@ -63,9 +75,5 @@ public class BallController : MonoBehaviour
         }
         bounceParticles.Play();
         ballSounds.Play();
-    }
-    public void SetVelocity()
-    {
-        body.velocity = speed * direction;
     }
 }

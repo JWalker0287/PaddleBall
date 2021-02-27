@@ -133,7 +133,7 @@ public class BreakoutGameController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             preGame = false;
-            ball.SetVelocity();
+            ball.Launch();
             gameSound.clip = startNoise;
             gameSound.Play();
         }
