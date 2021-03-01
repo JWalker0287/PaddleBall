@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     public ParticleSystem bounceParticles;
-    public float speed = 10;
+    public float speed = 0;
     public float initialSpeed = 10;
     public float speedIncrease = 0;
     public Vector3 direction = Vector3.up;
@@ -50,14 +50,15 @@ public class BallController : MonoBehaviour
     public void IncreaseSpeed()
     {
         speed += speedIncrease;
-
+        if (speed > maxSpeed) speed = maxSpeed;
+        body.velocity = body.velocity.normalized * speed;
     }
     void OnCollisionEnter(Collision c)
     {
         anim.SetTrigger("impact");
 
-        //float frac;
-        ballSounds.pitch = Random.Range(0.9f,1.0f);
+        float frac = (speed / maxSpeed);
+        ballSounds.pitch = Random.Range(0.5f,0.7f);
        // Debug.Log(c.gameObject);
         PaddleController thing = c.gameObject.GetComponent<PaddleController>();
         BrickController brick = c.gameObject.GetComponent<BrickController>();
@@ -73,7 +74,13 @@ public class BallController : MonoBehaviour
         {
             ballSounds.clip = wallHit;
         }
+        bounceParticles.transform.forward = c.GetContact(0).normal;
         bounceParticles.Play();
         ballSounds.Play();
+        PaddleController paddle = c.gameObject.GetComponent<PaddleController>();
+        if (paddle != null)
+        {
+            IncreaseSpeed();
+        }
     }
 }

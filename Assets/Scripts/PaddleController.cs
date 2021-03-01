@@ -56,7 +56,7 @@ public class PaddleController : MonoBehaviour
         BallController ball = c.gameObject.GetComponent<BallController>();
         if (ball == null) return;
 
-        Vector3 diff = ball.transform.position - transform.position;
+        Vector3 diff = ball.transform.position - transform.position ;
         ball.SetDirection(diff + ball.GetVelocity());
     }
     void OnTriggerEnter(Collider c)

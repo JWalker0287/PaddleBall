@@ -22,7 +22,7 @@ public class BreakoutGameController : MonoBehaviour
     public Text highScoreText;
     public int lives = 3;
     public int score = 0;
-    int highScore = 0;
+    public int highScore = 0;
     public int numBricks;
     int timesPlayed = 0;
     public BallController ball;
@@ -34,9 +34,12 @@ public class BreakoutGameController : MonoBehaviour
     public AudioClip loseLife;
     public AudioClip winNoise;
     public AudioClip startNoise;
+    public AudioClip brickBreak;
 
     void Start()
     {
+        highScore = PlayerPrefs.GetInt("highScore");
+        highScoreText.text = "Highscore: "+ highScore.ToString();
         gameCamera = Camera.main;
         SpawnBricks();
         Setup();
@@ -93,6 +96,7 @@ public class BreakoutGameController : MonoBehaviour
         if(score >= highScore)
         {
             highScore = score;
+            PlayerPrefs.SetInt("highScore", highScore);
         }
             highScoreText.text = "Highscore: " + highScore.ToString();
     }
@@ -189,5 +193,10 @@ public class BreakoutGameController : MonoBehaviour
         {
             lifeText.text += " B";
         }
+    }
+    public void BrickBreakSound()
+    {
+        gameSound.clip = brickBreak;
+        gameSound.Play();
     }
 }

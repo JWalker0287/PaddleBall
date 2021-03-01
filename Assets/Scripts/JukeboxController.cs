@@ -15,7 +15,13 @@ public class JukeboxController : MonoBehaviour
     }
     void Update()
     {
-        if (gameController.numBricks <= 19)
+        if (gameController.numBricks <= 5)
+        {
+            track2.volume = 1;
+            track3.volume = 0;
+            track4.volume = 1;
+        }
+        else if (gameController.numBricks <= 19)
         {
             track2.volume = 0;
             track3.volume = 0;
