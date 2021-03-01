@@ -11,7 +11,7 @@ public class BallController : MonoBehaviour
     public Vector3 direction = Vector3.up;
     public PaddleController paddle;
     public bool autoLaunch = true;
-    Rigidbody body;
+    public Rigidbody body;
     Animator anim;
     AudioSource ballSounds;
     public AudioClip wallHit;

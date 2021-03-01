@@ -86,6 +86,8 @@ public class BreakoutGameController : MonoBehaviour
         if (view.y < 0)
         {
             ball.transform.position = Vector3.zero;
+            ball.speed = 0;
+            ball.body.velocity = Vector3.zero;
             preGame = true;
             lives --;
             canvasAnim.SetTrigger("LifeLost");
