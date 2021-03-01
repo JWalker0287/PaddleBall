@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BreakoutGameController : MonoBehaviour
@@ -57,6 +58,10 @@ public class BreakoutGameController : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            SceneManager.LoadScene("Menu");
+        }
         if (lives == 0)
         {
            Lose();

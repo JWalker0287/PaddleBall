@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PongGameController : MonoBehaviour
@@ -31,6 +32,10 @@ public class PongGameController : MonoBehaviour
     }
     void Update ()
     {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            SceneManager.LoadScene("Menu");
+        }
         if (ball.gameObject.activeSelf)
         {
             UpdatePlaying();

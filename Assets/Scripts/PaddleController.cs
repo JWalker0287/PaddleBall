@@ -40,13 +40,13 @@ public class PaddleController : MonoBehaviour
         {
             view.y = 0;
         }
-         if (view.x > 1)
+         if (view.x > 0.95f)
         {
-            view.x = 1;
+            view.x = 0.95f;
         }
-        else if (view.x < 0)
+        else if (view.x < 0.05f)
         {
-            view.x = 0;
+            view.x = 0.05f;
         }
         transform.position = gameCamera.ViewportToWorldPoint(view);
 

@@ -25,13 +25,13 @@ public class BrickController : MonoBehaviour
     void OnCollisionExit(Collision c)
     {
         gameController.BrickBreakSound();
-        //int i = Random.Range(1,10);
-        //Debug.Log(i);
-        //if(i == 1)
-        //{
-        //   PowerUpController p = Instantiate<PowerUpController>(powerPrefab);
-        //    p.transform.position = transform.position;
-        //}
+        int i = Random.Range(1,20);
+        Debug.Log(i);
+        if(i == 1)
+        {
+           PowerUpController p = Instantiate<PowerUpController>(powerPrefab);
+            p.transform.position = transform.position;
+        }
         gameController.numBricks --;
         gameController.score += scorePerBrick;
         gameController.canvasAnim.SetTrigger("ScoreUp");

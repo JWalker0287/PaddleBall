@@ -655,6 +655,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 33362960092289255, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d7f11e42ac668744887ee0bea9f2a6f7, type: 2}
     - target: {fileID: 1293266616604411026, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -668,6 +672,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 889965598}
     - target: {fileID: 1347080375177460710, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
+      propertyPath: autoLaunch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347080375177460710, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
       propertyPath: initialSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -677,7 +685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2753872822891953443, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.522
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2753872822891953443, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
       propertyPath: m_LocalRotation.w
@@ -706,6 +714,26 @@ PrefabInstance:
     - target: {fileID: 2753872822891953443, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561249701781228831, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2d0e64dacb719dc49952c99c49e42c97, type: 2}
+    - target: {fileID: 5528661375517144801, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528661375517144801, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528661375517144801, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528661375517144801, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5528661375517144801, guid: 5fa437c65661f8445857d60af3fe6f64, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -920,7 +948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1256866409
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1817,6 +1845,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4710136662682131020, guid: 7902e0d4773126e4da35d75dd00ffe58, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b744015589295454fa840997939571a5, type: 2}
     - target: {fileID: 4857253870944825851, guid: 7902e0d4773126e4da35d75dd00ffe58, type: 3}
       propertyPath: m_Constraints
       value: 8
