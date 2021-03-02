@@ -6,13 +6,15 @@ using UnityEngine.UI;
 
 public class PongGameController : MonoBehaviour
 {
-    public Text scoreText;
+    public Text player1ScoreText;
+    public Text player2ScoreText;
     public Color red;
     public Color blue;
     public Text promptText;
     public BallController ball;
     public int player1Score;
     public int player2Score;
+    public Animator anim;
     Camera gameCamera;
 
 
@@ -51,11 +53,13 @@ public class PongGameController : MonoBehaviour
         if (view.x < 0)
         {
             player2Score ++;
+            anim.SetTrigger("Player2Scored");
             DisplayScore();
         }
         else if (view.x > 1)
         {
             player1Score ++;
+            anim.SetTrigger("Player1Scored");
             DisplayScore();
         }
 
@@ -81,7 +85,8 @@ public class PongGameController : MonoBehaviour
             promptText.text = "PLAYER 2 WINS!";
             ResetScore();
         }
-        scoreText.text = player1Score.ToString() + " - " + player2Score.ToString();
+        player1ScoreText.text = player1Score.ToString();
+        player2ScoreText.text = player2Score.ToString();
         ball.transform.position = Vector3.zero;
         ball.Launch();
     }

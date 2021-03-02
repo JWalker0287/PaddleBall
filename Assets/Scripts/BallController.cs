@@ -58,7 +58,7 @@ public class BallController : MonoBehaviour
         anim.SetTrigger("impact");
 
         float frac = (speed / maxSpeed);
-        ballSounds.pitch = Random.Range(0.5f,0.7f);
+        ballSounds.pitch = Random.Range(0.95f,1.05f);
        // Debug.Log(c.gameObject);
         PaddleController thing = c.gameObject.GetComponent<PaddleController>();
         BrickController brick = c.gameObject.GetComponent<BrickController>();
