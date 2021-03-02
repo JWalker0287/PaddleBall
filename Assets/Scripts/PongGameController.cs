@@ -54,12 +54,14 @@ public class PongGameController : MonoBehaviour
         {
             player2Score ++;
             anim.SetTrigger("Player2Scored");
+            ball.direction.x = 1;
             DisplayScore();
         }
         else if (view.x > 1)
         {
             player1Score ++;
             anim.SetTrigger("Player1Scored");
+            ball.direction.x = -1;
             DisplayScore();
         }
 

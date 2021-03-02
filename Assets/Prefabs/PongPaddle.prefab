@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4710136661762532149}
   - component: {fileID: 1240265262}
   - component: {fileID: 4857253870944825851}
+  - component: {fileID: 412018405550281675}
   m_Layer: 0
   m_Name: PongPaddle
   m_TagString: Untagged
@@ -47,8 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axisName: VerticalPlayer2
   velocity: {x: 0, y: 10, z: 0}
-  ball: {fileID: 0}
   autoPlay: 0
+  carl: {fileID: 0}
+  paddleSound: {fileID: 0}
 --- !u!54 &4857253870944825851
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -65,6 +67,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &412018405550281675
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4710136661762532148}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e8b13bc918add6043ada275b227be3a6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4710136662682131017
 GameObject:
   m_ObjectHideFlags: 0
