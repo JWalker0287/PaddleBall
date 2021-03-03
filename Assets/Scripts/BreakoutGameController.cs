@@ -128,7 +128,7 @@ public class BreakoutGameController : MonoBehaviour
     void Lose()
     {
         promptText.color = red;
-        promptText.text = "You Lose :(";
+        promptText.text = "You    Lose";
         promptText.enabled = true;
         ball.gameObject.SetActive(false);
         if (Input.GetButtonDown("Jump"))
