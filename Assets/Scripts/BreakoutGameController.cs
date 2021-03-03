@@ -149,7 +149,7 @@ public class BreakoutGameController : MonoBehaviour
             gameSound.Play();
         }
         Vector3 paddlePos = paddle.transform.position;
-        paddlePos.y = -8;
+        paddlePos.y = -7.8f;
         ball.transform.position = paddlePos;
     }
     void SpawnBricks()

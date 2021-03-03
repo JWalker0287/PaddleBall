@@ -12,8 +12,12 @@ public class PaddleController : MonoBehaviour
     Camera gameCamera;
     public BreakoutGameController carl;
     public AudioSource paddleSound;
+    Animator anim;
+    Rigidbody body;
     void Start()
     {
+        body = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         ball = FindObjectOfType<BallController>();
         gameCamera = Camera.main;
     }
@@ -30,6 +34,8 @@ public class PaddleController : MonoBehaviour
             dir = Input.GetAxisRaw(axisName);
         }
         transform.position += velocity * dir * Time.deltaTime;
+        anim.SetFloat("Speed", body.velocity.magnitude/50);
+        Debug.Log(body.velocity.magnitude);
 
         Vector3 view = gameCamera.WorldToViewportPoint(transform.position);
         if (view.y > 1)
@@ -49,14 +55,14 @@ public class PaddleController : MonoBehaviour
             view.x = 0.05f;
         }
         transform.position = gameCamera.ViewportToWorldPoint(view);
-
     }
     void OnCollisionEnter(Collision c)
     {
         BallController ball = c.gameObject.GetComponent<BallController>();
         if (ball == null) return;
 
-        Vector3 diff = ball.transform.position - transform.position ;
+        anim.SetTrigger("Collision");
+        Vector3 diff = ball.transform.position * 5 - transform.position *5;
         ball.SetDirection(diff + ball.GetVelocity());
     }
     void OnTriggerEnter(Collider c)
