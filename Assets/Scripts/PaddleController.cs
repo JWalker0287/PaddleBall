@@ -35,7 +35,7 @@ public class PaddleController : MonoBehaviour
         }
         transform.position += velocity * dir * Time.deltaTime;
         anim.SetFloat("Speed", body.velocity.magnitude/50);
-        Debug.Log(body.velocity.magnitude);
+        //Debug.Log(body.velocity.magnitude);
 
         Vector3 view = gameCamera.WorldToViewportPoint(transform.position);
         if (view.y > 1)

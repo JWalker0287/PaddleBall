@@ -21,6 +21,7 @@ public class BreakoutGameController : MonoBehaviour
     public Text lifeText;
     public Text scoreText;
     public Text highScoreText;
+    public int level = 1;
     public int lives = 3;
     public int score = 0;
     public int highScore = 0;
@@ -42,8 +43,19 @@ public class BreakoutGameController : MonoBehaviour
         highScore = PlayerPrefs.GetInt("highScore");
         highScoreText.text = "Highscore: "+ highScore.ToString();
         gameCamera = Camera.main;
+        //SetLevel();
+        //SpawnBricks();
+        //Setup();
+        timesPlayed = 0;
+        promptText.enabled = false;
+        ball.gameObject.SetActive(true);
+        preGame = true;
+        numBricks = bricks.Length;
+        SetLevel();
         SpawnBricks();
-        Setup();
+        //BrickReset();
+        //SpawnBricks();
+        UpdateLives();
     }
     void Setup()
     {
@@ -53,8 +65,11 @@ public class BreakoutGameController : MonoBehaviour
         ball.gameObject.SetActive(true);
         preGame = true;
         numBricks = bricks.Length;
-        UpdateLives();
         BrickReset();
+        SetLevel();
+        SpawnBricks();
+        UpdateLives();
+        //numBricks = 0;
     }
     void Update()
     {
@@ -122,6 +137,7 @@ public class BreakoutGameController : MonoBehaviour
         ball.gameObject.SetActive(false);
         if (Input.GetButtonDown("Jump"))
         {
+            level ++;
             Setup();
         }
     }
@@ -134,6 +150,7 @@ public class BreakoutGameController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             lives = 3;
+            level = 1;
             Setup();
         }
         score = 0;
@@ -154,6 +171,7 @@ public class BreakoutGameController : MonoBehaviour
     }
     void SpawnBricks()
     {
+        int count = 0;
         for(int i = 0;i < width; i++)
         {
             for (int j = 0;j < height; j++)
@@ -161,6 +179,8 @@ public class BreakoutGameController : MonoBehaviour
                 BrickController g = Instantiate<BrickController>(prefab);
                 g.transform.position = new Vector3(i * horizontalSpacing + bricksXPos,j*verticalSpacing + bricksYPos, 0);
                 color = g.GetComponentInChildren<MeshRenderer>();
+                bricks[count] = g;
+                count ++;
                 if(j >= 5)
                 {
                     color.material.SetColor("_Color",Color.red);
@@ -183,8 +203,9 @@ public class BreakoutGameController : MonoBehaviour
                 }
             }
         }
-        bricks = FindObjectsOfType<BrickController>();
-        numBricks = bricks.Length;
+
+        //bricks = FindObjectsOfType<BrickController>();
+        //numBricks = bricks.Length;
     }
     void BrickReset()
     {
@@ -192,6 +213,7 @@ public class BreakoutGameController : MonoBehaviour
         {
             bricks[i].ResetBricks();
         }
+        //SpawnBricks();
     }
     void UpdateLives()
     {
@@ -200,6 +222,41 @@ public class BreakoutGameController : MonoBehaviour
         {
             lifeText.text += " B";
         }
+    }
+    void SetLevel()
+    {
+        if(level == 1)
+        {
+            height = 2;
+            width = 4;
+            bricksXPos = -6;
+        }
+        else if (level == 2)
+        {
+            height = 2;
+            width = 13;
+            bricksXPos = -18;
+        }
+        else if (level == 3)
+        {
+            height = 4;
+            width = 13;
+            bricksXPos = -18;
+        }
+        else if (level == 4)
+        {
+            height = 5;
+            width = 13;
+            bricksXPos = -18;
+        }
+        else if (level >= 5)
+        {
+            height = 6;
+            width = 13;
+            bricksXPos = -18;
+        }
+        numBricks = height * width;
+        bricks = new BrickController[numBricks];
     }
     public void BrickBreakSound()
     {

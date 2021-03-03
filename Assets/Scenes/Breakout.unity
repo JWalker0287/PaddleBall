@@ -2001,6 +2001,10 @@ PrefabInstance:
       propertyPath: highScoreText
       value: 
       objectReference: {fileID: 220508925}
+    - target: {fileID: 4278493575717397786, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
+      propertyPath: bricks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4278493575717397787, guid: 4a8cba1eb1b2f8d40943e7d1ac579431, type: 3}
       propertyPath: m_RootOrder
       value: 0

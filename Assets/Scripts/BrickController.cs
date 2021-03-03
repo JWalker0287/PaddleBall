@@ -20,7 +20,8 @@ public class BrickController : MonoBehaviour
     }
     public void ResetBricks()
     {
-        brick.SetActive(true);
+        //brick.SetActive(true);
+        Destroy(brick);
     }
     void OnCollisionExit(Collision c)
     {
