@@ -7,6 +7,9 @@ public class PaddleController : MonoBehaviour
 
     public string axisName = "Horizontal";
     public Vector3 velocity = Vector3.right;
+    Vector3 pos1;
+    Vector3 pos2;
+    Vector3 arbitraryName;
     BallController ball;
     public bool autoPlay = false;
     Camera gameCamera;
@@ -33,18 +36,21 @@ public class PaddleController : MonoBehaviour
         {
             dir = Input.GetAxisRaw(axisName);
         }
+        pos1 = transform.position;
         transform.position += velocity * dir * Time.deltaTime;
-        anim.SetFloat("Speed", body.velocity.magnitude/50);
-        //Debug.Log(body.velocity.magnitude);
+        pos2 = transform.position;
+        arbitraryName = pos2-pos1;
+        anim.SetFloat("Speed", arbitraryName.magnitude * 4);
+        //Debug.Log(arbitraryName.magnitude);
 
         Vector3 view = gameCamera.WorldToViewportPoint(transform.position);
-        if (view.y > 1)
+        if (view.y > 0.95f)
         {
-            view.y = 1;
+            view.y = 0.95f;
         }
-        else if (view.y < 0)
+        else if (view.y < 0.05f)
         {
-            view.y = 0;
+            view.y = 0.05f;
         }
          if (view.x > 0.95f)
         {
