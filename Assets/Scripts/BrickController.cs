@@ -26,7 +26,7 @@ public class BrickController : MonoBehaviour
     void OnCollisionExit(Collision c)
     {
         gameController.BrickBreakSound();
-        int i = Random.Range(1,20);
+        int i = Random.Range(1,40);
         Debug.Log(i);
         if(i == 1)
         {

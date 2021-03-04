@@ -15,7 +15,9 @@ public class PongGameController : MonoBehaviour
     public int player1Score;
     public int player2Score;
     public Animator anim;
+    bool preGame = true;
     Camera gameCamera;
+    public AudioSource gameSound;
 
 
     void Start ()
@@ -29,7 +31,8 @@ public class PongGameController : MonoBehaviour
         player1Score = 0;
         player2Score = 0;
         ball.gameObject.SetActive(true);
-        ball.Launch();
+        preGame = true;
+        //ball.Launch();
         DisplayScore();
     }
     void Update ()
@@ -38,7 +41,11 @@ public class PongGameController : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
-        if (ball.gameObject.activeSelf)
+        if (preGame && player1Score < 7 && player2Score < 7 && ball.gameObject.activeSelf)
+        {
+            UpdatePreGame();
+        }
+        else if (player1Score < 7 && player2Score < 7 && ball.gameObject.activeSelf)
         {
             UpdatePlaying();
         }
@@ -70,11 +77,13 @@ public class PongGameController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            Setup();
+            Setup();   
+            player1Score = 0;
+            player1Score = 0;
+            Debug.Log("here");
         }
-    }
-    void DisplayScore()
-    {
+        else
+        {
         if(player1Score == 7)
         {
             promptText.color = blue;
@@ -87,10 +96,25 @@ public class PongGameController : MonoBehaviour
             promptText.text = "PLAYER 2 WINS!";
             ResetScore();
         }
+        }
+    }
+    void DisplayScore()
+    {
         player1ScoreText.text = player1Score.ToString();
         player2ScoreText.text = player2Score.ToString();
         ball.transform.position = Vector3.zero;
-        ball.Launch();
+        ball.body.velocity = Vector3.zero;
+        preGame = true;
+        //ball.Launch();
+    }
+    void UpdatePreGame()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            ball.Launch();
+            preGame = false;
+            gameSound.Play();
+        }
     }
     void ResetScore()
     {

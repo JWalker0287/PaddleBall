@@ -26,6 +26,7 @@ public class BreakoutGameController : MonoBehaviour
     public int score = 0;
     public int highScore = 0;
     public int numBricks;
+    public float startingBricks;
     int timesPlayed = 0;
     public BallController ball;
     public PaddleController paddle;
@@ -256,6 +257,7 @@ public class BreakoutGameController : MonoBehaviour
             bricksXPos = -18;
         }
         numBricks = height * width;
+        startingBricks = numBricks;
         bricks = new BrickController[numBricks];
     }
     public void BrickBreakSound()

@@ -15,25 +15,25 @@ public class JukeboxController : MonoBehaviour
     }
     void Update()
     {
-        if (gameController.numBricks <= 5)
+        if (gameController.numBricks / gameController.startingBricks <= 0.07f)
         {
             track2.volume = 1;
             track3.volume = 0;
             track4.volume = 1;
         }
-        else if (gameController.numBricks <= 19)
+        else if (gameController.numBricks / gameController.startingBricks  <= 0.25f)
         {
             track2.volume = 0;
             track3.volume = 0;
             track4.volume = 1;
         }
-        else if (gameController.numBricks <= 39)
+        else if (gameController.numBricks / gameController.startingBricks  <= 0.5f)
         {
             track2.volume = 0;
             track3.volume = 1;
             track4.volume = 0;
         }
-        else if (gameController.numBricks <= 58)
+        else if (gameController.numBricks / gameController.startingBricks  <= 0.75f)
         {
             track2.volume = 1;
             track3.volume = 0;
