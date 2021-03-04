@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-   public void PlayPong()
+   public void PlayPongVsAI()
    {
-       SceneManager.LoadScene("Pong");
+       SceneManager.LoadScene("PongVsAI");
+   }
+   public void PlayPongMultiplayer()
+   {
+       SceneManager.LoadScene("PongMultiplayer");
    }
    public void PlayBreakout()
    {

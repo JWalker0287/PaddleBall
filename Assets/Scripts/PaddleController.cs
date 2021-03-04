@@ -40,7 +40,8 @@ public class PaddleController : MonoBehaviour
         transform.position += velocity * dir * Time.deltaTime;
         pos2 = transform.position;
         arbitraryName = pos2-pos1;
-        anim.SetFloat("Speed", arbitraryName.magnitude * 4);
+        arbitraryName = arbitraryName.normalized;
+        anim.SetFloat("Speed", arbitraryName.magnitude/2);
         //Debug.Log(arbitraryName.magnitude);
 
         Vector3 view = gameCamera.WorldToViewportPoint(transform.position);
