@@ -74,7 +74,7 @@ public class BallController : MonoBehaviour
         {
             ballSounds.clip = wallHit;
         }
-        bounceParticles.transform.forward = c.GetContact(0).normal;
+        bounceParticles.transform.forward = -c.GetContact(0).normal;
         bounceParticles.Play();
         ballSounds.Play();
         PaddleController paddle = c.gameObject.GetComponent<PaddleController>();

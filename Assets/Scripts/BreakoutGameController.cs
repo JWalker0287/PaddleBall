@@ -255,6 +255,10 @@ public class BreakoutGameController : MonoBehaviour
             height = 6;
             width = 13;
             bricksXPos = -18;
+            if (ball.speedIncrease < 10)
+            {
+                ball.speedIncrease += 0.5f;
+            }
         }
         numBricks = height * width;
         startingBricks = numBricks;
