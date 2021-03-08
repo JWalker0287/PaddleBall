@@ -15,7 +15,7 @@ public class JukeboxController : MonoBehaviour
     }
     void Update()
     {
-        if (gameController.numBricks / gameController.startingBricks <= 0.07f)
+        if (gameController.numBricks / gameController.startingBricks <= 0.1f)
         {
             track2.volume = 1;
             track3.volume = 0;

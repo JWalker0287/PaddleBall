@@ -9,8 +9,8 @@ public class BreakoutGameController : MonoBehaviour
     public BrickController prefab;
     public Color red;
     public Color green;
-    public int width;
-    public int height;
+    public int columns;
+    public int rows;
     public float horizontalSpacing;
     public float verticalSpacing;
     public float bricksXPos;
@@ -173,9 +173,9 @@ public class BreakoutGameController : MonoBehaviour
     void SpawnBricks()
     {
         int count = 0;
-        for(int i = 0;i < width; i++)
+        for(int i = 0;i < columns; i++)
         {
-            for (int j = 0;j < height; j++)
+            for (int j = 0;j < rows; j++)
             {
                 BrickController g = Instantiate<BrickController>(prefab);
                 g.transform.position = new Vector3(i * horizontalSpacing + bricksXPos,j*verticalSpacing + bricksYPos, 0);
@@ -228,39 +228,39 @@ public class BreakoutGameController : MonoBehaviour
     {
         if(level == 1)
         {
-            height = 2;
-            width = 4;
+            rows = 2;
+            columns = 4;
             bricksXPos = -6;
         }
         else if (level == 2)
         {
-            height = 2;
-            width = 13;
+            rows = 2;
+            columns = 13;
             bricksXPos = -18;
         }
         else if (level == 3)
         {
-            height = 4;
-            width = 13;
+            rows = 4;
+            columns = 13;
             bricksXPos = -18;
         }
         else if (level == 4)
         {
-            height = 5;
-            width = 13;
+            rows = 5;
+            columns = 13;
             bricksXPos = -18;
         }
         else if (level >= 5)
         {
-            height = 6;
-            width = 13;
+            rows = 6;
+            columns = 13;
             bricksXPos = -18;
             if (ball.speedIncrease < 10)
             {
                 ball.speedIncrease += 0.5f;
             }
         }
-        numBricks = height * width;
+        numBricks = rows * columns;
         startingBricks = numBricks;
         bricks = new BrickController[numBricks];
     }
